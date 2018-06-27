@@ -1,5 +1,21 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
-const Footer = () => <footer className="App-footer">Footer</footer>
+const Footer = () => (
+  <footer
+    className="App-footer"
+    style={{
+      display: 'flex',
+      justifyContent: 'space-around'
+    }}
+  >
+    <button>Prev</button>
+    <button>Next</button>
+  </footer>
+)
 
-export default Footer
+const mapStateToProps = state => ({
+  form: state.form
+})
+
+export default connect(mapStateToProps)(Footer)
