@@ -1,16 +1,17 @@
 const initialState = {
   currentStep: 1,
+  inputData: {},
   successData: {}
 }
 
 const NEXT_STEP = 'APP/FORM/NEXT_STEP'
 const PREV_STEP = 'APP/FORM/PREV_STEP'
-const MARK_SUCCESS = 'APP/FORM/MARK_SUCCESS'
+const SAVE_INPUT = 'APP/FORM/SAVE_INPUT'
 
-export function markSuccess(valid) {
+export function saveInput(data) {
   return {
-    type: MARK_SUCCESS,
-    payload: valid
+    type: SAVE_INPUT,
+    payload: data
   }
 }
 
@@ -38,12 +39,16 @@ export function formReducer(state = initialState, action) {
         ...state,
         currentStep: state.currentStep - 1
       }
-    case MARK_SUCCESS:
+    case SAVE_INPUT:
       return {
         ...state,
         successData: {
           ...state.successData,
-          [state.currentStep - 1]: action.payload
+          [state.currentStep - 1]: action.payload.valid
+        },
+        inputData: {
+          ...state.inputData,
+          [state.currentStep - 1]: action.payload.value
         }
       }
     default:

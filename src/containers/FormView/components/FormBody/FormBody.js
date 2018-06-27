@@ -1,18 +1,19 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import { markSuccess } from '../../../../reducers/form'
+import { saveInput } from '../../../../reducers/form'
 import QuestionWrapper from '../../../../components/Question/QuestionWrapper'
 import './FormBody.css'
 
 class FormBody extends Component {
   handleChange = data => {
-    this.props.markSuccess(data.valid)
+    this.props.saveInput(data)
   }
 
   render() {
     const { form } = this.props
     const question = this.props.questions[form.currentStep - 1]
+    console.log(form)
     return (
       <div className="FormBody">
         <QuestionWrapper onChange={this.handleChange} question={question} />
@@ -26,7 +27,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = {
-  markSuccess
+  saveInput
 }
 
 export default connect(
