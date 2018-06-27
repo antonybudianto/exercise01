@@ -13,10 +13,12 @@ class FormBody extends Component {
   render() {
     const { form } = this.props
     const question = this.props.questions[form.currentStep - 1]
+    const data = form.data[form.currentStep - 1] || { value: '' }
     return (
       <div className="FormBody">
         <QuestionWrapper
           key={question.id}
+          value={data.value}
           onChange={this.handleChange}
           question={question}
         />

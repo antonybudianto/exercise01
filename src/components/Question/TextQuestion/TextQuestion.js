@@ -14,7 +14,7 @@ class TextQuestion extends Component {
   }
 
   render() {
-    const { question } = this.props
+    const { question, value } = this.props
     return (
       <div>
         <h3>{question.prompt}</h3>
@@ -23,6 +23,7 @@ class TextQuestion extends Component {
           <textarea
             placeholder="Type in your message here"
             onChange={this.handleChange}
+            value={value}
             name="textQuestion"
             cols="30"
             rows="10"
