@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 
 import { saveInput } from '../../../../reducers/form'
 import QuestionWrapper from '../../../../components/Question/QuestionWrapper'
+import FormResult from '../FormResult/FormResult'
 import './FormBody.css'
 
 class FormBody extends Component {
@@ -12,6 +13,11 @@ class FormBody extends Component {
 
   render() {
     const { form } = this.props
+
+    if (form.currentStep - 1 === this.props.questions.length) {
+      return <FormResult />
+    }
+
     const question = this.props.questions[form.currentStep - 1]
     const data = form.data[form.currentStep - 1] || { value: '' }
     return (

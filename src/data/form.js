@@ -13,7 +13,7 @@ export const FORM_DATA = {
       question_type: 'TextQuestion',
       prompt: 'What is your second answer?',
       is_required: true,
-      min_char_length: 100
+      min_char_length: 10
     },
     {
       id: 2500,
