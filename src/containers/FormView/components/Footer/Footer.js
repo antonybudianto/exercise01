@@ -5,7 +5,12 @@ import { goToNext, goToPrev } from '../../../../reducers/form'
 
 class Footer extends Component {
   render() {
-    const { form } = this.props
+    const { form, totalQuestions } = this.props
+
+    if (form.currentStep - 1 === totalQuestions) {
+      return <div>You've submitted the form, thank you!</div>
+    }
+
     let questionData = form.data[form.currentStep - 1] || {}
     let isValid = questionData.valid === undefined ? false : questionData.valid
     const disablePrev = form.currentStep === 1
@@ -21,7 +26,7 @@ class Footer extends Component {
           Prev
         </button>
         <button disabled={!isValid} onClick={this.props.goToNext}>
-          Next
+          {form.currentStep === totalQuestions ? 'Submit' : 'Next'}
         </button>
       </footer>
     )

@@ -11,7 +11,7 @@ class FormView extends Component {
       <div>
         <Header title={FORM_DATA.title} />
         <FormBody questions={FORM_DATA.questions} />
-        <Footer />
+        <Footer totalQuestions={FORM_DATA.questions.length} />
       </div>
     )
   }
