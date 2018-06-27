@@ -14,11 +14,11 @@ class TextQuestion extends Component {
   }
 
   render() {
-    const { question, required } = this.props
+    const { question } = this.props
     return (
       <div>
         <h3>{question.prompt}</h3>
-        <div>{required ? '*Required!' : '(optional)'}</div>
+        <div>{question.is_required ? '*Required!' : '(optional)'}</div>
         <div>
           <textarea
             placeholder="Type in your message here"
