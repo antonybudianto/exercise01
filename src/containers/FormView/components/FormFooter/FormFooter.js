@@ -28,7 +28,7 @@ class FormFooter extends Component {
           disabled={disablePrev}
           onClick={this.props.goToPrev}
         >
-          Prev
+          {'<'} Prev
         </button>
         <button
           className="FormFooter__Btn"
