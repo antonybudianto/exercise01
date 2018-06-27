@@ -1,33 +1,50 @@
 const initialState = {
-  currentStep: 1
+  currentStep: 1,
+  successData: {}
 }
 
-const FORM_NEXT_STEP = 'APP/FORM/FORM_NEXT_STEP'
-const FORM_PREV_STEP = 'APP/FORM/FORM_PREV_STEP'
+const NEXT_STEP = 'APP/FORM/NEXT_STEP'
+const PREV_STEP = 'APP/FORM/PREV_STEP'
+const MARK_SUCCESS = 'APP/FORM/MARK_SUCCESS'
+
+export function markSuccess(valid) {
+  return {
+    type: MARK_SUCCESS,
+    payload: valid
+  }
+}
 
 export function goToNext() {
   return {
-    type: FORM_NEXT_STEP
+    type: NEXT_STEP
   }
 }
 
 export function goToPrev() {
   return {
-    type: FORM_PREV_STEP
+    type: PREV_STEP
   }
 }
 
 export function formReducer(state = initialState, action) {
   switch (action.type) {
-    case FORM_NEXT_STEP:
+    case NEXT_STEP:
       return {
         ...state,
         currentStep: state.currentStep + 1
       }
-    case FORM_PREV_STEP:
+    case PREV_STEP:
       return {
         ...state,
         currentStep: state.currentStep - 1
+      }
+    case MARK_SUCCESS:
+      return {
+        ...state,
+        successData: {
+          ...state.successData,
+          [state.currentStep - 1]: action.payload
+        }
       }
     default:
       return state

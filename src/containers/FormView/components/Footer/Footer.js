@@ -5,6 +5,10 @@ import { goToNext, goToPrev } from '../../../../reducers/form'
 
 class Footer extends Component {
   render() {
+    const { form } = this.props
+    let isSuccess = form.successData[form.currentStep - 1]
+    isSuccess = isSuccess === undefined ? false : isSuccess
+    const disablePrev = form.currentStep === 1
     return (
       <footer
         className="App-footer"
@@ -13,8 +17,12 @@ class Footer extends Component {
           justifyContent: 'space-around'
         }}
       >
-        <button onClick={this.props.goToPrev}>Prev</button>
-        <button onClick={this.props.goToNext}>Next</button>
+        <button disabled={disablePrev} onClick={this.props.goToPrev}>
+          Prev
+        </button>
+        <button disabled={!isSuccess} onClick={this.props.goToNext}>
+          Next
+        </button>
       </footer>
     )
   }
