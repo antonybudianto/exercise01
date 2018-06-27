@@ -1,0 +1,21 @@
+.FormFooter {
+  border-top: 1px solid lightgray;
+  padding-top: 10px;
+}
+
+.FormFooter__Btn {
+  color: white;
+  background-color: darkred;
+  font-size: 12pt;
+  padding: 12px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.FormFooter__Btn:disabled {
+  background-color: lightgray;
+}
+
+.FormFooter__Btn:hover {
+  background-color: palevioletred;
+}

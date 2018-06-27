@@ -2,8 +2,9 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 import { goToNext, goToPrev } from '../../../../reducers/form'
+import './FormFooter.css'
 
-class Footer extends Component {
+class FormFooter extends Component {
   render() {
     const { form, totalQuestions } = this.props
 
@@ -16,17 +17,25 @@ class Footer extends Component {
     const disablePrev = form.currentStep === 1
     return (
       <footer
-        className="App-footer"
+        className="FormFooter"
         style={{
           display: 'flex',
           justifyContent: 'space-around'
         }}
       >
-        <button disabled={disablePrev} onClick={this.props.goToPrev}>
+        <button
+          className="FormFooter__Btn"
+          disabled={disablePrev}
+          onClick={this.props.goToPrev}
+        >
           Prev
         </button>
-        <button disabled={!isValid} onClick={this.props.goToNext}>
-          {form.currentStep === totalQuestions ? 'Submit' : 'Next'}
+        <button
+          className="FormFooter__Btn"
+          disabled={!isValid}
+          onClick={this.props.goToNext}
+        >
+          {form.currentStep === totalQuestions ? 'Submit' : 'Next >'}
         </button>
       </footer>
     )
@@ -45,4 +54,4 @@ const mapDispatchToProps = {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Footer)
+)(FormFooter)
