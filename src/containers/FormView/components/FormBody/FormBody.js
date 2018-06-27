@@ -15,7 +15,11 @@ class FormBody extends Component {
     const question = this.props.questions[form.currentStep - 1]
     return (
       <div className="FormBody">
-        <QuestionWrapper onChange={this.handleChange} question={question} />
+        <QuestionWrapper
+          key={question.id}
+          onChange={this.handleChange}
+          question={question}
+        />
       </div>
     )
   }
