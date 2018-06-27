@@ -8,7 +8,9 @@ const FormResult = ({ data }) => {
     <div
       style={{
         textAlign: 'left',
-        padding: '20px'
+        padding: '20px',
+        width: '50%',
+        margin: 'auto'
       }}
     >
       {FORM_DATA.questions.map((q, i) => (
