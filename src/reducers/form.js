@@ -1,7 +1,6 @@
 const initialState = {
   currentStep: 1,
-  inputData: {},
-  successData: {}
+  data: {}
 }
 
 const NEXT_STEP = 'APP/FORM/NEXT_STEP'
@@ -42,13 +41,12 @@ export function formReducer(state = initialState, action) {
     case SAVE_INPUT:
       return {
         ...state,
-        successData: {
-          ...state.successData,
-          [state.currentStep - 1]: action.payload.valid
-        },
-        inputData: {
-          ...state.inputData,
-          [state.currentStep - 1]: action.payload.value
+        data: {
+          ...state.data,
+          [state.currentStep - 1]: {
+            valid: action.payload.valid,
+            value: action.payload.value
+          }
         }
       }
     default:

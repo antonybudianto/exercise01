@@ -6,8 +6,8 @@ import { goToNext, goToPrev } from '../../../../reducers/form'
 class Footer extends Component {
   render() {
     const { form } = this.props
-    let isSuccess = form.successData[form.currentStep - 1]
-    isSuccess = isSuccess === undefined ? false : isSuccess
+    let questionData = form.data[form.currentStep - 1] || {}
+    let isValid = questionData.valid === undefined ? false : questionData.valid
     const disablePrev = form.currentStep === 1
     return (
       <footer
@@ -20,7 +20,7 @@ class Footer extends Component {
         <button disabled={disablePrev} onClick={this.props.goToPrev}>
           Prev
         </button>
-        <button disabled={!isSuccess} onClick={this.props.goToNext}>
+        <button disabled={!isValid} onClick={this.props.goToNext}>
           Next
         </button>
       </footer>

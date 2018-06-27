@@ -13,7 +13,6 @@ class FormBody extends Component {
   render() {
     const { form } = this.props
     const question = this.props.questions[form.currentStep - 1]
-    console.log(form)
     return (
       <div className="FormBody">
         <QuestionWrapper onChange={this.handleChange} question={question} />
