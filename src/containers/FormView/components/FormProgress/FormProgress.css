@@ -11,5 +11,5 @@
 .FormProgress__Bar {
   background-color: rgb(106, 233, 106);
   height: 100%;
-  transition: height 1s ease-in;
+  transition: all 0.2s ease-in;
 }
