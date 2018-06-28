@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 function validateField(value, question) {
   if (question.is_required) {
-    return value.length !== 0
+    return Object.values(value).some(v => v)
   }
   return true
 }
@@ -22,10 +22,13 @@ class CheckboxQuestion extends Component {
     }
   }
 
-  handleCheck(e, opt) {
+  handleCheck(e, i) {
     const { value, question } = this.props
     let updatedValue = { ...value }
-    updatedValue[opt] = e.target.checked
+    updatedValue[i] = e.target.checked
+    if (!updatedValue[i]) {
+      delete updatedValue[i]
+    }
     const valid = validateField(updatedValue, question)
     this.props.onChange({ valid, value: updatedValue })
   }
@@ -46,8 +49,8 @@ class CheckboxQuestion extends Component {
           >
             <label htmlFor={opt}>
               <input
-                onChange={e => this.handleCheck(e, opt)}
-                checked={value[opt] || false}
+                onChange={e => this.handleCheck(e, i)}
+                checked={value[i] || false}
                 type="checkbox"
                 name={opt}
                 id={opt}
