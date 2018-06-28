@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { FORM_DATA } from '../../../../data/form'
+import { getQuestionResult } from '../../../../util/question-result-util'
 
 const FormResult = ({ data }) => {
   const result = Object.values(data)
@@ -22,7 +23,7 @@ const FormResult = ({ data }) => {
               height: '50px'
             }}
           >
-            Answer: {result[i].value}
+            Answer: {getQuestionResult(result[i].value, q)}
           </div>
         </div>
       ))}

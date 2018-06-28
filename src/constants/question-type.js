@@ -1,3 +1,4 @@
 export const QUESTION_TYPE = {
-  TEXT: 'TextQuestion'
+  TEXT: 'TextQuestion',
+  CHECKBOX: 'CheckboxQuestion'
 }
