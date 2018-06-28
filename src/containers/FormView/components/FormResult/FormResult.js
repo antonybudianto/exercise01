@@ -23,7 +23,7 @@ const FormResult = ({ data }) => {
               height: '50px'
             }}
           >
-            Answer: {getQuestionResult(result[i].value, q)}
+            Answer: {getQuestionResult(result[i].value, q) || '-'}
           </div>
         </div>
       ))}
